@@ -27,7 +27,3 @@ export class DialogNewTaskComponent implements OnInit {
     this.dialogRef.close(this.taskInfo);
   }
 }
-//
-//
-
-// k
