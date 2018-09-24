@@ -12,7 +12,7 @@ export class TaskHomeComponent implements OnInit {
   lists = [
     {
       id: 1,
-      name: '代办',
+      name: '待办：',
       tasks: [
         {
           id: 1,
@@ -56,7 +56,7 @@ export class TaskHomeComponent implements OnInit {
     },
     {
       id: 2,
-      name: '办理',
+      name: '办理：',
       tasks: [
         {
           id: 1,

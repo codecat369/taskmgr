@@ -8,20 +8,20 @@
     <mat-radio-group>
       <mat-radio-button *ngFor="let piority of piorities" [value]="piority.value">{{piority.label}}</mat-radio-button>
     </mat-radio-group>
+
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="duaDatePicker" placeholder="截止日期">
+      <mat-datepicker-toggle matSuffix [for]="duaDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #duaDatePicker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="rminderDatePicker" placeholder="提醒日期">
+      <mat-datepicker-toggle matSuffix [for]="rminderDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #rminderDatePicker></mat-datepicker>
+    </mat-form-field>
   </mat-dialog-content>
-
-  <mat-form-field>
-    <input matInput [matDatepicker]="duaDatePicker" placeholder="截止日期">
-    <mat-datepicker-toggle matSuffix [for]="duaDatePicker"></mat-datepicker-toggle>
-    <mat-datepicker #duaDatePicker></mat-datepicker>
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput [matDatepicker]="rminderDatePicker" placeholder="提醒日期">
-    <mat-datepicker-toggle matSuffix [for]="rminderDatePicker"></mat-datepicker-toggle>
-    <mat-datepicker #rminderDatePicker></mat-datepicker>
-  </mat-form-field>
-
-
   <mat-dialog-actions>
     <button mat-raised-button color="primary" type="button" (click)="onSave()">保存</button>
     <button mat-button type="button" mat-dialog-close>关闭</button>
