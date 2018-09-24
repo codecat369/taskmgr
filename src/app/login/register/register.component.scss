@@ -1,0 +1,32 @@
+@import "~src/assets/styles/base.scss";
+
+#RegistCard,
+mat-card-content {
+    justify-content: space-between;
+    align-content: space-between;
+    min-width: 280px;
+    @extend .ctn-flex,
+    .ctn-column;
+    #btn {
+        @extend .ctn-flex,
+        .ctn-row;
+        justify-content: center;
+    }
+    #txt {
+        @extend .ctn-flex,
+        .ctn-column;
+        align-items: flex-end;
+        p {
+            color: rgb(113, 114, 119);
+            font-size: 12px;
+        }
+    }
+}
+
+.avatar {
+    overflow: hidden;
+    width: 64px;
+    height: 64px;
+    // border-radius: 500%;
+    margin: 1px;
+}

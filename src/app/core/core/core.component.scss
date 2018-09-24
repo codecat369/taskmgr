@@ -1,0 +1,18 @@
+@import "~src/assets/styles/base.scss";
+mat-drawer-container {
+    @extend .ctn-full;
+    #mainContainer {
+        @extend .ctn-full;
+        display: flex;
+        flex-direction: column;
+        main {
+            display: flex;
+            flex: 1 1 auto;
+            flex-direction: row;
+            align-items: center; //col
+            justify-content: center;
+            align-content: center;
+            align-items: stretch;
+        }
+    }
+}

@@ -1,0 +1,43 @@
+@import "~src/assets/styles/base.scss";
+:host {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    align-items: stretch;
+}
+
+.task-lists {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    align-items: stretch;
+    justify-content: flex-start;
+}
+
+.list-container {
+    display: flex;
+    flex: 0 0 360px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    justify-content: space-between;
+}
+
+.fab-button {
+    position: absolute;
+    position: fixed;
+    right: 32px;
+    bottom: 96px;
+    z-index: 998;
+}
+
+.list-item {
+    display: flex;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    //  align-content: space-between;
+    //     align-content: space-between;
+}

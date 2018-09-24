@@ -1,0 +1,57 @@
+<div class="card-host">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>
+        <h2>登录</h2>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form>
+        <span> </span>
+        <mat-form-field>
+          <input matInput type="email" placeholder="邮箱" [formControl]="emailFormControl" [errorStateMatcher]="matcher">
+          <mat-hint>正确(〃'▽'〃)</mat-hint>
+          <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            请输入邮箱！
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            <strong>必填项！</strong>
+          </mat-error>
+        </mat-form-field>
+        <span> </span>
+        <mat-form-field>
+          <input matInput type="password" placeholder="密码">
+          <mat-hint>必填项！</mat-hint>
+        </mat-form-field>
+        <span> </span>
+        <div class="btn-host">
+          <button mat-flat-button color="primary" type="button">提交</button>
+          <button mat-button type="reset">重置</button>
+        </div>
+      </form>
+    </mat-card-content>
+    <mat-card-actions id=txt>
+      <div>
+        <p>还没有账号？<a href="">注册</a></p>
+        <p>忘记密码？<a href="">找回</a></p>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+  <mat-card>
+    <mat-card-header>
+      <!-- <div mat-card-avatar class="example-header-image"></div> -->
+      <mat-card-title>
+        <h2>重庆输气作业区</h2>
+      </mat-card-title>
+      <!-- <mat-card-subtitle>Dog Breed</mat-card-subtitle> -->
+    </mat-card-header>
+    <img mat-card-image src="http://p0.ifengimg.com/fck/2017_41/1b995f779f19f78_w900_h600.jpg" alt="Photo of a Shiba Inu">
+    <mat-card-content>
+      <p>
+        破管检测系统广泛应用在天然气管道系统中，是管道系统重要的安全应急装置。
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+    </mat-card-actions>
+  </mat-card>
+</div>

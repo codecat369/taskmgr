@@ -1,0 +1,18 @@
+<div class="list-item" [ngClass]="{
+  'priority-normal' : item.priority === 3,
+  'priority-important' : item.priority === 2,
+  'priority-emergency' : item.priority === 1
+}">
+  <mat-checkbox class="completion-status" [(ngModel)]="item.completed"></mat-checkbox>
+  <div class="task-info">
+    <span mat-line [ngClass]="{'completed':item.completed}" [matTooltip]="item.desc" class="text-span">{{item.desc}}</span>
+    <div mat-line class="buttom-bar">
+      <span  class="duedate"> {{item.dueDate | date: "yyyy-MM-dd HH:mm:ss" }} </span>
+      <mat-icon [matTooltip]="item.reminder |  date: 'yyyy-MM-dd HH:mm:ss'" *ngIf="item.reminder" class="alarm">alarm</mat-icon>
+    </div>
+  </div>
+  <div class="avt-host">
+  </div>
+   <!-- <img [src]="item.owner.avatar" alt=""> -->
+  <mat-icon mat-list-avatar class="avatar" [matTooltip]="item.owner.name" [svgIcon]="item.owner.avatar"></mat-icon>
+</div>

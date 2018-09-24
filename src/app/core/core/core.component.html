@@ -1,0 +1,16 @@
+<mat-drawer-container [class.theme-a]="thm1">
+  <mat-drawer #drawer mode="over">
+    <app-sidebar></app-sidebar>
+  </mat-drawer>
+  <div id="mainContainer">
+    <header>
+      <app-header (toggleEvent)="drawer.toggle()"></app-header>
+    </header>
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+    <footer>
+      <app-footer></app-footer>
+    </footer>
+  </div>
+</mat-drawer-container>
