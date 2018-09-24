@@ -7,13 +7,24 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { TaskItemComponent } from './task-item/task-item.component';
 import { TaskHeaderComponent } from './task-header/task-header.component';
 import { DialogNewTaskComponent } from './dialog-new-task/dialog-new-task.component';
+import { DialogCopyTaskComponent } from './dialog-copy-task/dialog-copy-task.component';
 
 @NgModule({
   imports: [
     SharedModule,
     TaskRoutingModule,
   ],
-  declarations: [TaskHomeComponent, TaskListComponent, TaskItemComponent, TaskHeaderComponent, DialogNewTaskComponent],
-  entryComponents: [DialogNewTaskComponent]
+  declarations: [
+    TaskHomeComponent,
+    TaskListComponent,
+    TaskItemComponent,
+    TaskHeaderComponent,
+    DialogNewTaskComponent,
+    DialogCopyTaskComponent
+  ],
+  entryComponents: [
+    DialogNewTaskComponent,
+    DialogCopyTaskComponent,
+  ]
 })
 export class TaskModule { }

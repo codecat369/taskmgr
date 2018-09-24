@@ -17,7 +17,7 @@ export class DialogNewTaskComponent implements OnInit {
     desc: '',
   };
   constructor(
-    @Inject(MAT_DIALOG_DATA) public dialogConfig,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private dialogRef: MatDialogRef<DialogNewTaskComponent>,
   ) {
   }

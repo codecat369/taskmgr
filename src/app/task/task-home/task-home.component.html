@@ -4,7 +4,11 @@
     <!-- <app-task-item *ngFor="let task of list.tasks" [item]="task" class="list-item"></app-task-item> -->
     <mat-list>
       <!-- <ng-content></ng-content> -->
-      <app-task-header [header]="list.name" (newTaskEvent)="openNewTaskDialog()"></app-task-header>
+      <app-task-header 
+      [header]="list.name" 
+      (newTaskEvent)="openNewTaskDialog()"
+      (moveAllEvent)="openMoveAllDialog()"
+      ></app-task-header>
       <mat-list-item *ngFor="let task of list.tasks" class="list-item">
         <app-task-item [item]="task"></app-task-item>
       </mat-list-item>

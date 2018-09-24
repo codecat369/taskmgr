@@ -2,6 +2,7 @@ import { OnDestroy, OnInit, Component, Input, Inject } from '@angular/core';
 
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DialogNewTaskComponent } from '../dialog-new-task/dialog-new-task.component';
+import { DialogCopyTaskComponent } from '../dialog-copy-task/dialog-copy-task.component';
 @Component({
   selector: 'app-task-home',
   templateUrl: './task-home.component.html',
@@ -12,7 +13,7 @@ export class TaskHomeComponent implements OnInit {
   lists = [
     {
       id: 1,
-      name: '待办：',
+      name: '待办',
       tasks: [
         {
           id: 1,
@@ -47,7 +48,7 @@ export class TaskHomeComponent implements OnInit {
           owner: {
             id: 1,
             name: 'Tony',
-            // avatar: 'avatars:svg-11',
+            avatar: 'avatars:svg-6',
           },
           dueDate: new Date(),
           reminder: new Date(),
@@ -56,7 +57,7 @@ export class TaskHomeComponent implements OnInit {
     },
     {
       id: 2,
-      name: '办理：',
+      name: '办理',
       tasks: [
         {
           id: 1,
@@ -110,7 +111,20 @@ export class TaskHomeComponent implements OnInit {
       pName: '?',
       pDesc: '??',
     };
-    const dialogRef = this.dialog.open(DialogNewTaskComponent, dialogConfig);
+    const dialogRef = this.dialog.open(DialogNewTaskComponent, dialogConfig );
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Invite Dialog was closed');
+      console.log(result);
+    });
+  }
+  openMoveAllDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = { lists: this.lists };
+    // console.log(JSON.stringify(dialogConfig.data.lists));
+
+    const dialogRef = this.dialog.open(DialogCopyTaskComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
       console.log('Invite Dialog was closed');
       console.log(result);

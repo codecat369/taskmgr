@@ -9,11 +9,16 @@ import { EventManager } from '@angular/platform-browser';
 export class TaskHeaderComponent implements OnInit {
   @Input() header = '';
   @Output() newTaskEvent = new EventEmitter<void>();
+  @Output() moveAllEvent = new EventEmitter<void>();
+
   constructor() { }
 
   ngOnInit() {
   }
   onNewTaskClick() {
     this.newTaskEvent.emit();
+  }
+  onMoveAllClick() {
+    this.moveAllEvent.emit();
   }
 }

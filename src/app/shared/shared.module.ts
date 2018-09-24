@@ -17,6 +17,7 @@ import {
   MatRadioModule,
   MatDatepickerModule,
   MatNativeDateModule,
+  MatSelectModule,
 
 } from '@angular/material';
 
@@ -42,6 +43,7 @@ import {
     MatRadioModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSelectModule,
 
   ],
   exports: [
@@ -63,6 +65,7 @@ import {
     MatTooltipModule,
     MatRadioModule,
     MatDatepickerModule,
+    MatSelectModule,
     MatNativeDateModule,
   ],
   declarations: []
