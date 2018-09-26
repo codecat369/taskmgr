@@ -108,15 +108,33 @@ export class TaskHomeComponent implements OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.data = {
-      pName: '?',
-      pDesc: '??',
+      title: '新建任务',
     };
-    const dialogRef = this.dialog.open(DialogNewTaskComponent, dialogConfig );
+    const dialogRef = this.dialog.open(DialogNewTaskComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
       console.log('Invite Dialog was closed');
       console.log(result);
     });
   }
+  openTaskEditorDialog(task: any) {
+    console.log('openTaskEditorDialog');
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+      title: '编辑任务',
+      task: task,
+    };
+    // console.log(JSON.stringify(task));
+
+    const dialogRef = this.dialog.open(DialogNewTaskComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Invite Dialog was closed');
+      console.log(result);
+    });
+  }
+
   openMoveAllDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
@@ -130,4 +148,5 @@ export class TaskHomeComponent implements OnInit {
       console.log(result);
     });
   }
+
 }

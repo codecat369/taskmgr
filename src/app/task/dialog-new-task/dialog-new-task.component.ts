@@ -7,6 +7,8 @@ import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angu
   styleUrls: ['./dialog-new-task.component.scss']
 })
 export class DialogNewTaskComponent implements OnInit {
+  // data: any;
+  // title: string;
   piorities = [
     { value: 3, label: '一般' },
     { value: 2, label: '重要' },
@@ -22,9 +24,11 @@ export class DialogNewTaskComponent implements OnInit {
   ) {
   }
   ngOnInit() {
+    console.log(JSON.stringify(this.data));
+
   }
   onSave() {
-    this.dialogRef.close(this.taskInfo);
+    this.dialogRef.close(this.data);
   }
 }
 
