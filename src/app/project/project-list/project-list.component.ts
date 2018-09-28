@@ -27,34 +27,39 @@ export class ProjectListComponent implements OnInit {
   ngOnInit() {
   }
 
-  openNewProjectDialog() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.data = {
-      pName: '?',
-      pDesc: '??',
-      theme: 'theme-dark-a',
-    };
-    const dialogRef = this.dialogNew.open(NewProjectComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('NewProject Dialog was closed');
-      console.log(result);
-    });
-  }
   openInviteDialog() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.data = {
-      pName: '?',
-      pDesc: '??',
-      theme: 'theme-dark-a',
+
     };
     const dialogRef = this.dialogNew.open(InviteComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
       console.log('Invite Dialog was closed');
       console.log(result);
     });
+  }
+
+  openProjectDialog(title: string, project?: any) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+      title: title,
+      project: project,
+    };
+    const dialogRef = this.dialogNew.open(NewProjectComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Invite Dialog was closed');
+      console.log(result);
+    });
+  }
+  openNewProjectDialog() {
+    this.openProjectDialog('新建工程');
+
+  }
+  openEditDialog(project: any) {
+    this.openProjectDialog('编辑工程', project);
   }
 }
