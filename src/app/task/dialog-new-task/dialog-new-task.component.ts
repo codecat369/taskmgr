@@ -24,6 +24,7 @@ export class DialogNewTaskComponent implements OnInit {
   ) {
   }
   ngOnInit() {
+    console.log('DialogNewTaskComponent');
     console.log(JSON.stringify(this.data));
 
   }

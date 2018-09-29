@@ -3,6 +3,8 @@ import { OnDestroy, OnInit, Component, Input, Inject } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DialogNewTaskComponent } from '../dialog-new-task/dialog-new-task.component';
 import { DialogCopyTaskComponent } from '../dialog-copy-task/dialog-copy-task.component';
+import { DialogConfirmComponent } from '../../shared/dialog-confirm/dialog-confirm.component';
+
 @Component({
   selector: 'app-task-home',
   templateUrl: './task-home.component.html',
@@ -103,36 +105,26 @@ export class TaskHomeComponent implements OnInit {
 
   ngOnInit() {
   }
-  openNewTaskDialog() {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.data = {
-      title: '新建任务',
-    };
-    const dialogRef = this.dialog.open(DialogNewTaskComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('Invite Dialog was closed');
-      console.log(result);
-    });
-  }
-  openTaskEditorDialog(task: any) {
-    console.log('openTaskEditorDialog');
 
+  openTasjDialog(title: string, task = {}) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.data = {
-      title: '编辑任务',
+      title: title,
       task: task,
     };
-    // console.log(JSON.stringify(task));
-
     const dialogRef = this.dialog.open(DialogNewTaskComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
-      console.log('Invite Dialog was closed');
-      console.log(result);
+      console.log(JSON.stringify(result));
     });
+  }
+
+  openNewTaskDialog() {
+    this.openTasjDialog('新建任务');
+  }
+  openTaskEditorDialog(task: any) {
+    this.openTasjDialog('修改任务', task);
   }
 
   openMoveAllDialog() {
@@ -148,5 +140,20 @@ export class TaskHomeComponent implements OnInit {
       console.log(result);
     });
   }
-
+  deleteTask(list: any) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+      title: '确认删除',
+      content: list.name,
+    };
+    const dialogRef = this.dialog.open(DialogConfirmComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      if (result) {
+        // this.projects
+      }
+    });
+  }
 }

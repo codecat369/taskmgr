@@ -6,7 +6,8 @@
       <!-- <ng-content></ng-content> -->
       <app-task-header [header]="list.name" 
       (newTaskEvent)="openNewTaskDialog()" 
-      (moveAllEvent)="openMoveAllDialog()"></app-task-header>
+      (moveAllEvent)="openMoveAllDialog()"
+      (delTaskEvent)="deleteTask(list)"></app-task-header>
       <mat-list-item *ngFor="let task of list.tasks"
        class="list-item">
         <app-task-item [item]="task" (openTaskEditorEvent)="openTaskEditorDialog(task)"></app-task-item>

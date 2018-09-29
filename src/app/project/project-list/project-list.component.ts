@@ -1,7 +1,7 @@
 import { OnDestroy, OnInit, Component, Input, Inject } from '@angular/core';
 import { NewProjectComponent } from '../new-project/new-project.component';
 import { InviteComponent } from '../invite/invite.component';
-
+import { DialogConfirmComponent } from '../../shared/dialog-confirm/dialog-confirm.component';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 @Component({
   selector: 'app-project-list',
@@ -22,7 +22,7 @@ export class ProjectListComponent implements OnInit {
       'coverImg': 'assets/img/covers/1.jpg'
     },
   ];
-  constructor(private dialogNew: MatDialog) { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -34,7 +34,7 @@ export class ProjectListComponent implements OnInit {
     dialogConfig.data = {
 
     };
-    const dialogRef = this.dialogNew.open(InviteComponent, dialogConfig);
+    const dialogRef = this.dialog.open(InviteComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
       console.log('Invite Dialog was closed');
       console.log(result);
@@ -49,7 +49,7 @@ export class ProjectListComponent implements OnInit {
       title: title,
       project: project,
     };
-    const dialogRef = this.dialogNew.open(NewProjectComponent, dialogConfig);
+    const dialogRef = this.dialog.open(NewProjectComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
       console.log('Invite Dialog was closed');
       console.log(result);
@@ -57,9 +57,26 @@ export class ProjectListComponent implements OnInit {
   }
   openNewProjectDialog() {
     this.openProjectDialog('新建工程');
-
   }
+
   openEditDialog(project: any) {
     this.openProjectDialog('编辑工程', project);
+  }
+
+  deleteProject(list: any) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+      title: '确认删除',
+      content: list.desc,
+    };
+    const dialogRef = this.dialog.open(DialogConfirmComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      if (result) {
+        // this.projects
+      }
+    });
   }
 }
