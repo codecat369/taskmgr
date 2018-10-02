@@ -4,6 +4,7 @@ import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angu
 import { DialogNewTaskComponent } from '../dialog-new-task/dialog-new-task.component';
 import { DialogCopyTaskComponent } from '../dialog-copy-task/dialog-copy-task.component';
 import { DialogConfirmComponent } from '../../shared/dialog-confirm/dialog-confirm.component';
+import { NewTaskListComponent } from '../new-task-list/new-task-list.component';
 
 @Component({
   selector: 'app-task-home',
@@ -106,7 +107,7 @@ export class TaskHomeComponent implements OnInit {
   ngOnInit() {
   }
 
-  openTasjDialog(title: string, task = {}) {
+  openTaskDialog(title: string, task = {}) {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
@@ -121,10 +122,10 @@ export class TaskHomeComponent implements OnInit {
   }
 
   openNewTaskDialog() {
-    this.openTasjDialog('新建任务');
+    this.openTaskDialog('新建任务');
   }
   openTaskEditorDialog(task: any) {
-    this.openTasjDialog('修改任务', task);
+    this.openTaskDialog('修改任务', task);
   }
 
   openMoveAllDialog() {
@@ -155,5 +156,24 @@ export class TaskHomeComponent implements OnInit {
         // this.projects
       }
     });
+  }
+  openTaskListDialog(title: string, taskListName = '') {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+      title: title,
+      taskListName: taskListName,
+    };
+    const dialogRef = this.dialog.open((NewTaskListComponent), dialogConfig);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(JSON.stringify(result));
+    });
+  }
+  openNewTaskListDialog() {
+    this.openTaskListDialog('新建标签名称');
+  }
+  openEditTaskListDialog(taskList: any) {
+    this.openTaskListDialog('修改标签名称', taskList.name);
   }
 }

@@ -8,6 +8,7 @@ import { TaskItemComponent } from './task-item/task-item.component';
 import { TaskHeaderComponent } from './task-header/task-header.component';
 import { DialogNewTaskComponent } from './dialog-new-task/dialog-new-task.component';
 import { DialogCopyTaskComponent } from './dialog-copy-task/dialog-copy-task.component';
+import { NewTaskListComponent } from './new-task-list/new-task-list.component';
 
 @NgModule({
   imports: [
@@ -20,11 +21,13 @@ import { DialogCopyTaskComponent } from './dialog-copy-task/dialog-copy-task.com
     TaskItemComponent,
     TaskHeaderComponent,
     DialogNewTaskComponent,
-    DialogCopyTaskComponent
+    DialogCopyTaskComponent,
+    NewTaskListComponent,
   ],
   entryComponents: [
     DialogNewTaskComponent,
     DialogCopyTaskComponent,
+    NewTaskListComponent,
   ]
 })
 export class TaskModule { }

@@ -7,14 +7,15 @@
       <app-task-header [header]="list.name" 
       (newTaskEvent)="openNewTaskDialog()" 
       (moveAllEvent)="openMoveAllDialog()"
-      (delTaskEvent)="deleteTask(list)"></app-task-header>
+      (delTaskEvent)="deleteTask(list)"
+      (editTaskListEvent)="openEditTaskListDialog(list)"></app-task-header>
       <mat-list-item *ngFor="let task of list.tasks"
        class="list-item">
         <app-task-item [item]="task" (openTaskEditorEvent)="openTaskEditorDialog(task)"></app-task-item>
       </mat-list-item>
     </mat-list>
   </app-task-list>
-  <button mat-fab type="button" (click)="openNewTaskDialog()" class="fab-button">
+  <button mat-fab type="button" (click)="openNewTaskListDialog()" class="fab-button">
     <mat-icon>add</mat-icon>
   </button>
 </div>
