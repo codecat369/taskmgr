@@ -1,5 +1,5 @@
 <mat-drawer-container [class.theme-a]="thm1">
-  <mat-drawer #drawer mode="over">
+  <mat-drawer #drawer mode="over" (click)="drawer.toggle()">
     <app-sidebar></app-sidebar>
   </mat-drawer>
   <div id="mainContainer">

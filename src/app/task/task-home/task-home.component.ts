@@ -1,15 +1,18 @@
-import { OnDestroy, OnInit, Component, Input, Inject } from '@angular/core';
+import { OnDestroy, OnInit, Component, Input, Inject, HostBinding, HostListener } from '@angular/core';
 
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DialogNewTaskComponent } from '../dialog-new-task/dialog-new-task.component';
 import { DialogCopyTaskComponent } from '../dialog-copy-task/dialog-copy-task.component';
 import { DialogConfirmComponent } from '../../shared/dialog-confirm/dialog-confirm.component';
 import { NewTaskListComponent } from '../new-task-list/new-task-list.component';
+import { slide2Rigth } from '../../animate/router.anim';
 
 @Component({
   selector: 'app-task-home',
   templateUrl: './task-home.component.html',
-  styleUrls: ['./task-home.component.scss']
+  styleUrls: ['./task-home.component.scss'],
+  animations: [slide2Rigth]
+
 })
 export class TaskHomeComponent implements OnInit {
 
@@ -102,6 +105,8 @@ export class TaskHomeComponent implements OnInit {
       ]
     },
   ];
+  @HostBinding('@routeAnim')
+  state;
   constructor(private dialog: MatDialog) { }
 
   ngOnInit() {

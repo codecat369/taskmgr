@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding, HostListener } from '@angular/core';
 
-import {FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import {ErrorStateMatcher} from '@angular/material/core';
+import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
+import { slide2Rigth } from '../../animate/router.anim';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -14,14 +15,16 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  animations: [slide2Rigth]
 })
 export class LoginComponent implements OnInit {
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
   ]);
-
+  @HostBinding('@routeAnim')
+  state;
   matcher = new MyErrorStateMatcher();
   constructor() { }
 

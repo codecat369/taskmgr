@@ -1,4 +1,5 @@
 <div class="list-item" (click)="openTaskEditor()"
+[@item]='itemState'
 [ngClass]="{
   'priority-normal' : item.priority === 3,
   'priority-important' : item.priority === 2,
