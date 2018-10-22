@@ -1,4 +1,9 @@
-import { OnDestroy, OnInit, Component, Input, Inject, HostBinding, HostListener } from '@angular/core';
+import {
+  OnDestroy,
+  OnInit, Component, Input, Inject,
+  HostBinding, HostListener,
+  ChangeDetectionStrategy, ChangeDetectorRef
+} from '@angular/core';
 
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { DialogNewTaskComponent } from '../dialog-new-task/dialog-new-task.component';
@@ -11,8 +16,8 @@ import { slide2Rigth } from '../../animate/router.anim';
   selector: 'app-task-home',
   templateUrl: './task-home.component.html',
   styleUrls: ['./task-home.component.scss'],
-  animations: [slide2Rigth]
-
+  animations: [slide2Rigth],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TaskHomeComponent implements OnInit {
 
@@ -107,7 +112,7 @@ export class TaskHomeComponent implements OnInit {
   ];
   @HostBinding('@routeAnim')
   state;
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private cdRef: ChangeDetectorRef) { }
 
   ngOnInit() {
   }
@@ -123,6 +128,7 @@ export class TaskHomeComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogNewTaskComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
       console.log(JSON.stringify(result));
+      this.cdRef.markForCheck();
     });
   }
 
@@ -144,6 +150,7 @@ export class TaskHomeComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('Invite Dialog was closed');
       console.log(result);
+      this.cdRef.markForCheck();
     });
   }
   deleteTask(list: any) {
@@ -159,6 +166,7 @@ export class TaskHomeComponent implements OnInit {
       console.log(result);
       if (result) {
         // this.projects
+        this.cdRef.markForCheck();
       }
     });
   }
@@ -173,6 +181,7 @@ export class TaskHomeComponent implements OnInit {
     const dialogRef = this.dialog.open((NewTaskListComponent), dialogConfig);
     dialogRef.afterClosed().subscribe(result => {
       console.log(JSON.stringify(result));
+      this.cdRef.markForCheck();
     });
   }
   openNewTaskListDialog() {

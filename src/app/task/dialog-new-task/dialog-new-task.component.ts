@@ -1,10 +1,11 @@
-import { OnDestroy, OnInit, Component, Input, Inject } from '@angular/core';
+import { OnDestroy, OnInit, Component, Input, Inject, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-dialog-new-task',
   templateUrl: './dialog-new-task.component.html',
-  styleUrls: ['./dialog-new-task.component.scss']
+  styleUrls: ['./dialog-new-task.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DialogNewTaskComponent implements OnInit {
   // data: any;
@@ -21,6 +22,7 @@ export class DialogNewTaskComponent implements OnInit {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialogRef: MatDialogRef<DialogNewTaskComponent>,
+    private cdRef: ChangeDetectorRef
   ) {
   }
   ngOnInit() {
@@ -30,6 +32,7 @@ export class DialogNewTaskComponent implements OnInit {
   }
   onSave() {
     this.dialogRef.close(this.data);
+    this.cdRef.markForCheck();
   }
 }
 

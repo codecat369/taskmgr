@@ -1,11 +1,12 @@
-import { OnDestroy, OnInit, Component, Input, Inject } from '@angular/core';
+import { OnDestroy, OnInit, Component, Input, Inject, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { OverlayContainer } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-invite',
   templateUrl: './invite.component.html',
-  styleUrls: ['./invite.component.scss']
+  styleUrls: ['./invite.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InviteComponent implements OnInit {
 

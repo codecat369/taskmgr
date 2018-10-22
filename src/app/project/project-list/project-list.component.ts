@@ -1,15 +1,32 @@
-import { OnDestroy, OnInit, Component, Input, Inject, HostBinding, HostListener } from '@angular/core';
+import {
+  OnDestroy,
+  OnInit,
+  Component,
+  Input,
+  Inject,
+  HostBinding,
+  HostListener,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef
+} from '@angular/core';
 import { NewProjectComponent } from '../new-project/new-project.component';
 import { InviteComponent } from '../invite/invite.component';
 import { DialogConfirmComponent } from '../../shared/dialog-confirm/dialog-confirm.component';
-import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import {
+  MatDialog,
+  MatDialogConfig,
+  MatDialogRef,
+  MAT_DIALOG_DATA
+} from '@angular/material';
 import { slide2Rigth } from '../../animate/router.anim';
 import { listAnimation } from '../../animate/list.anim';
+
 @Component({
   selector: 'app-project-list',
   templateUrl: './project-list.component.html',
   styleUrls: ['./project-list.component.scss'],
-  animations: [slide2Rigth, listAnimation]
+  animations: [slide2Rigth, listAnimation],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProjectListComponent implements OnInit {
 
@@ -29,7 +46,8 @@ export class ProjectListComponent implements OnInit {
   ];
   @HostBinding('@routeAnim')
   state;
-  constructor(private dialog: MatDialog) { }
+  
+  constructor(private dialog: MatDialog, private cdRef: ChangeDetectorRef) { }
 
   ngOnInit() {
   }
@@ -45,6 +63,7 @@ export class ProjectListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('Invite Dialog was closed');
       console.log(result);
+      this.cdRef.markForCheck();
     });
   }
 
@@ -77,6 +96,7 @@ export class ProjectListComponent implements OnInit {
         'desc': '项目demo9',
         'coverImg': 'assets/img/covers/6.jpg'
       }];
+      this.cdRef.markForCheck();
     });
   }
 
@@ -86,6 +106,7 @@ export class ProjectListComponent implements OnInit {
     dialogRef.afterClosed().subscribe(data => {
       console.log(data);
       // this.projects = [...this.projects, data.project];
+      this.cdRef.markForCheck();
     });
   }
 
@@ -103,6 +124,7 @@ export class ProjectListComponent implements OnInit {
       if (result) {
         // this.projects.pop();
         this.projects = this.projects.filter(p => p.id !== list.id);
+        this.cdRef.markForCheck();
       }
     });
   }

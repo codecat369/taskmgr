@@ -1,9 +1,10 @@
-import { OnDestroy, OnInit, Component, Input, Inject } from '@angular/core';
+import { OnDestroy, OnInit, Component, Input, Inject, ChangeDetectionStrategy } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 @Component({
   selector: 'app-new-project',
   templateUrl: './new-project.component.html',
-  styleUrls: ['./new-project.component.scss']
+  styleUrls: ['./new-project.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NewProjectComponent implements OnInit {
 
