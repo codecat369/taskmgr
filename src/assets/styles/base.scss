@@ -45,3 +45,13 @@
     @extend .ctn-center-row,
     .ctn-center-column;
 }
+
+.dragStart{
+    opacity: 50%;
+    background-color: #f36d6d;
+    // border: 5px solid rgb(0, 255, 0);
+}
+.drapEnter{
+    background-color: #b58ceb;
+
+}

@@ -190,4 +190,19 @@ export class TaskHomeComponent implements OnInit {
   openEditTaskListDialog(taskList: any) {
     this.openTaskListDialog('修改标签名称', taskList.name);
   }
+  handleMove(srcData, list) {
+    console.log('drop');
+
+    switch (srcData.tag) {
+      case 'task-list':
+        console.log(srcData.tag);
+        break;
+      case 'task-item':
+        console.log(srcData.tag);
+        break;
+      default:
+        console.log(srcData.tag);
+        break;
+    }
+  }
 }

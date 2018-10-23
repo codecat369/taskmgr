@@ -1,3 +1,4 @@
+
 import { NgModule, SkipSelf, Optional } from '@angular/core';
 import { SharedModule } from '../shared/shared.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -19,6 +20,7 @@ import { TaskModule } from '../task/task.module';
 import { CoreComponent } from './core/core.component';
 @NgModule({
   imports: [
+
     SharedModule,
     HttpClientModule,
     BrowserModule,

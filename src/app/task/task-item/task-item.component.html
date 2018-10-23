@@ -1,6 +1,6 @@
-<div class="list-item" (click)="openTaskEditor()"
-[@item]='itemState'
-[ngClass]="{
+<div class="list-item" (click)="openTaskEditor()" [@item]='itemState' 
+app-draggable="true" dragTag="task-item" [dragData]="item"  draggedClass="dragStart"
+  [ngClass]="{
   'priority-normal' : item.priority === 3,
   'priority-important' : item.priority === 2,
   'priority-emergency' : item.priority === 1
@@ -9,7 +9,7 @@
   <div class="task-info">
     <span mat-line [ngClass]="{'completed':item.completed}" [matTooltip]="item.desc" class="text-span">{{item.desc}}</span>
     <div mat-line class="buttom-bar">
-      <span  class="duedate"> {{item.dueDate | date: "yyyy-MM-dd HH:mm:ss" }} </span>
+      <span class="duedate"> {{item.dueDate | date: "yyyy-MM-dd HH:mm:ss" }} </span>
       <mat-icon [matTooltip]="item.reminder |  date: 'yyyy-MM-dd HH:mm:ss'" *ngIf="item.reminder" class="alarm">alarm</mat-icon>
     </div>
   </div>
