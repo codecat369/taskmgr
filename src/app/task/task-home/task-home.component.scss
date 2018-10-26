@@ -46,6 +46,8 @@ mat-list-item {
 .list-container {
     display: flex;
     flex: 0 0 360px;
+    margin-left: 2px;
+    margin-right: 2px;
     overflow-x: hidden;
     overflow-y: scroll;
     justify-content: space-between;

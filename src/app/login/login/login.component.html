@@ -6,26 +6,27 @@
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <form>
+      <form [formGroup]="form" (ngSubmit)="onSubmit(form,$event)">
         <span> </span>
         <mat-form-field>
-          <input matInput type="email" placeholder="邮箱" [formControl]="emailFormControl" [errorStateMatcher]="matcher">
+          <input formControlName="email" matInput type="email" placeholder="邮箱" [errorStateMatcher]="matcher">
           <mat-hint>正确(〃'▽'〃)</mat-hint>
-          <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+          <!-- <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
             请输入邮箱！
-          </mat-error>
+          </mat-error> -->
+          <mat-error>{{form.controls['email'].errors | json}}</mat-error>
           <mat-error *ngIf="emailFormControl.hasError('required')">
             <strong>必填项！</strong>
           </mat-error>
         </mat-form-field>
         <span> </span>
         <mat-form-field>
-          <input matInput type="password" placeholder="密码">
+          <input formControlName="password" matInput type="password" placeholder="密码">
           <mat-hint>必填项！</mat-hint>
         </mat-form-field>
         <span> </span>
         <div class="btn-host">
-          <button mat-flat-button color="primary" type="button">提交</button>
+          <button mat-flat-button color="primary" type="submit" [disabled]="!form.valid">提交</button>
           <button mat-button type="reset">重置</button>
         </div>
       </form>

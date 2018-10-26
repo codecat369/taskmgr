@@ -1,16 +1,14 @@
 <div class="task-lists">
-  <app-task-list 
-
-  app-draggable="true" dragTag="task-list" [dragData]="list"  draggedClass="dragStart"
-  app-dropable dropTags="['task-item','task-list']" drapEnterClass="drapEnter" 
-  (dropped)="handleMove($event,list)"
-  *ngFor="let list of lists" [list]="list" class="list-container">
+  <app-task-list [ngStyle]="{'order':list.order}" app-draggable="true" dragTag="task-list" [dragData]="list"
+    draggedClass="dragStart" app-dropable dropTags="['task-item','task-list']" drapEnterClass="drapEnter" (dropped)="handleMove($event,list)"
+    *ngFor="let list of lists" [list]="list" class="list-container">
     <!-- <app-task-header [header]="list.name"></app-task-header> -->
     <!-- <app-task-item *ngFor="let task of list.tasks" [item]="task" class="list-item"></app-task-item> -->
     <mat-list>
       <!-- <ng-content></ng-content> -->
       <app-task-header [header]="list.name" (newTaskEvent)="openNewTaskDialog()" (moveAllEvent)="openMoveAllDialog()"
         (delTaskEvent)="deleteTask(list)" (editTaskListEvent)="openEditTaskListDialog(list)"></app-task-header>
+      <app-quick-task class="ctn-flex-fullwidth" (quickTaskEvent)="handleQuickTask($event)"></app-quick-task>
       <mat-list-item *ngFor="let task of list.tasks" class="list-item">
         <app-task-item [item]="task" (openTaskEditorEvent)="openTaskEditorDialog(task)"></app-task-item>
       </mat-list-item>

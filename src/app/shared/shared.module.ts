@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DirectiveModule } from '../directive/directive.module';
-
 import {
   MatToolbarModule,
   MatIconModule,
@@ -22,6 +21,7 @@ import {
   MatSelectModule,
 } from '@angular/material';
 import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
+import { ImageListSelectComponent } from './image-list-select/image-list-select.component';
 
 
 @NgModule({
@@ -80,6 +80,7 @@ import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.componen
   ],
   declarations: [
     DialogConfirmComponent,
+    ImageListSelectComponent,
   ]
 })
 export class SharedModule { }

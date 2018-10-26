@@ -24,10 +24,12 @@ export class TaskHomeComponent implements OnInit {
   lists = [
     {
       id: 1,
+      order: 1,
       name: '待办',
       tasks: [
         {
           id: 1,
+          order: 1,
           desc: '去星巴克喝咖啡',
           completed: true,
           priority: 3,
@@ -41,6 +43,7 @@ export class TaskHomeComponent implements OnInit {
         },
         {
           id: 2,
+          order: 2,
           desc: '去肯德基吃午餐',
           completed: true,
           priority: 2,
@@ -53,6 +56,7 @@ export class TaskHomeComponent implements OnInit {
         },
         {
           id: 3,
+          order: 3,
           desc: '去麦当劳吃晚餐',
           completed: false,
           priority: 1,
@@ -68,10 +72,12 @@ export class TaskHomeComponent implements OnInit {
     },
     {
       id: 2,
+      order: 2,
       name: '办理',
       tasks: [
         {
           id: 1,
+          order: 1,
           desc: '去星巴克喝咖啡',
           completed: false,
           priority: 1,
@@ -84,6 +90,7 @@ export class TaskHomeComponent implements OnInit {
         },
         {
           id: 2,
+          order: 2,
           desc: '去肯德基吃午餐',
           completed: false,
           priority: 1,
@@ -96,6 +103,7 @@ export class TaskHomeComponent implements OnInit {
         },
         {
           id: 3,
+          order: 3,
           desc: 'hhhhhhhhhhhhhhhhhhhh去麦当劳吃晚餐',
           completed: false,
           priority: 1,
@@ -196,6 +204,9 @@ export class TaskHomeComponent implements OnInit {
     switch (srcData.tag) {
       case 'task-list':
         console.log(srcData.tag);
+        const temp = srcData.data.order;
+        srcData.data.order = list.order;
+        list.order = temp;
         break;
       case 'task-item':
         console.log(srcData.tag);
@@ -204,5 +215,8 @@ export class TaskHomeComponent implements OnInit {
         console.log(srcData.tag);
         break;
     }
+  }
+  handleQuickTask(ev: string) {
+    console.log(ev);
   }
 }

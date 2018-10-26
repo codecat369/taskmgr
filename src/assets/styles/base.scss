@@ -9,8 +9,6 @@
     @extend .ctn-nospace;
 }
 
-
-
 .ctn-flex {
     display: flex; //position: relative;
 }
@@ -23,6 +21,11 @@
 .ctn-flex-fixed {
     @extend .ctn-flex;
     flex: none;
+}
+
+.ctn-flex-fullwidth {
+    width: 100%;
+    @extend .ctn-nospace;
 }
 
 .ctn-column {
@@ -46,12 +49,11 @@
     .ctn-center-column;
 }
 
-.dragStart{
+.dragStart {
     opacity: 50%;
-    background-color: #f36d6d;
-    // border: 5px solid rgb(0, 255, 0);
+    background-color: #f36d6d; // border: 5px solid rgb(0, 255, 0);
 }
-.drapEnter{
-    background-color: #b58ceb;
 
+.drapEnter {
+    background-color: #b58ceb;
 }

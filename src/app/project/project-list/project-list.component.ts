@@ -46,7 +46,7 @@ export class ProjectListComponent implements OnInit {
   ];
   @HostBinding('@routeAnim')
   state;
-  
+
   constructor(private dialog: MatDialog, private cdRef: ChangeDetectorRef) { }
 
   ngOnInit() {
