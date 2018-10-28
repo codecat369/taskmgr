@@ -1,5 +1,5 @@
 <mat-card>
-  <form>
+  <form [formGroup]="form" (ngSubmit)="onSubmit(form,$event)">
     <mat-card-header>
       <mat-card-title>
         <h2>新用户注册</h2>
@@ -8,29 +8,32 @@
     </mat-card-header>
     <mat-card-content>
       <mat-form-field>
-        <input matInput type="email" placeholder="邮箱">
+        <input matInput type="email" placeholder="邮箱" formControlName="email">
         <span matSuffix>@petrochina.com.cn</span>
         <mat-hint>*</mat-hint>
       </mat-form-field>
       <mat-form-field>
-        <input matInput type="password" placeholder="密码">
+        <input matInput type="password" placeholder="密码" formControlName="psd">
         <mat-hint>*</mat-hint>
       </mat-form-field>
       <mat-form-field>
-        <input matInput type="password" placeholder="确认密码">
+        <input matInput type="password" placeholder="确认密码" formControlName="psdrpt">
         <mat-hint>*</mat-hint>
       </mat-form-field>
-      <div>
+      <!-- <div>
         <mat-grid-list cols="6">
           <mat-grid-tile *ngFor="let img of imgPath">
             <mat-icon [svgIcon]="img" class="avatar"></mat-icon>
           </mat-grid-tile>
         </mat-grid-list>
-      </div>
+      </div> -->
+      <app-image-list-select formControlName="avatar" [cols]="4" [imgs]="imgPath">
+
+      </app-image-list-select>
     </mat-card-content>
     <mat-card-actions>
       <div id=btn>
-        <button mat-button type="button">提交</button>
+        <button mat-button type="submit">提交</button>
         <button mat-button type="reset">重置</button>
       </div>
       <div id=txt>

@@ -1,3 +1,24 @@
-<p>
-  image-list-select works!
-</p>
+<div>
+  <span>{{title}}</span>
+  <mat-icon class="avatar" [svgIcon]="selected" *ngIf="useSvgIcon else imgSelect"></mat-icon>
+  <ng-template #imgSelect>
+    <img src="selected" alt="头像">
+  </ng-template>
+</div>
+<div class="scroll-container">
+  <mat-grid-list [cols]="cols" [rowHeight]="rowHeight">
+    <mat-grid-tile *ngFor="let img of imgs">
+      <div class="image-container" (click)="onSelect(img)">
+        <mat-icon [svgIcon]="img" class="avatar" *ngIf="useSvgIcon else imgPic"></mat-icon>
+        <ng-template #imgPic>
+          <img src="img" alt="头像">
+        </ng-template>
+        <div class="after">
+          <div class="zoom">
+            <mat-icon>checked</mat-icon>
+          </div>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

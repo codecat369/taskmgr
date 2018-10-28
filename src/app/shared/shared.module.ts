@@ -73,6 +73,7 @@ import { ImageListSelectComponent } from './image-list-select/image-list-select.
     MatNativeDateModule,
 
     DirectiveModule,
+    ImageListSelectComponent,
 
   ],
   entryComponents: [

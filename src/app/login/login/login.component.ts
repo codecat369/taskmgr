@@ -41,7 +41,6 @@ export class LoginComponent implements OnInit {
     //     ]),
     //   }
     // );
-
     this.form = this.fb.group({
       email: ['email@abc.om',
         Validators.compose([
@@ -54,9 +53,8 @@ export class LoginComponent implements OnInit {
         Validators.required,
       ],
     });
-
-
   }
+
   onSubmit({ value, valid }, ev: Event) {
     ev.preventDefault();
     console.log(JSON.stringify(value));
@@ -74,4 +72,5 @@ export class LoginComponent implements OnInit {
       return { emailNotValid: '这不是一个邮件地址' };
     }
   }
+
 }
