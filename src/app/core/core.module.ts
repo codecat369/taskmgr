@@ -5,6 +5,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry, MatSidenavModule } from '@angular/material';
 import { loadSVGResource } from '../utils/svg.utils';
@@ -18,10 +19,13 @@ import { GviewModule } from '../gview/gview.module';
 import { GviserModule } from '../gviser/gviser.module';
 import { TaskModule } from '../task/task.module';
 import { CoreComponent } from './core/core.component';
+
+import { ServicesModule } from '../services/services.module';
 @NgModule({
   imports: [
 
     SharedModule,
+    HttpModule,
     HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
@@ -33,6 +37,8 @@ import { CoreComponent } from './core/core.component';
     GviserModule,
     GviserModule,
     TaskModule,
+
+    ServicesModule.forRoot(),
   ],
   exports: [
     HeaderComponent,
@@ -45,6 +51,13 @@ import { CoreComponent } from './core/core.component';
     FooterComponent,
     SidebarComponent,
     CoreComponent,
+  ],
+  providers: [
+    {
+      provide: 'BASE_CONFIG', useValue: {
+        apiUri: 'http://localhost:3000'
+      }
+    }
   ]
 })
 export class CoreModule {

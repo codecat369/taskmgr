@@ -1,7 +1,9 @@
-import { Component, OnInit, HostBinding, HostListener } from '@angular/core';
+import { Component, OnInit, HostBinding, HostListener, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup, FormControl, FormGroupDirective, NgForm, Validators, FormBuilder } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { slide2Rigth } from '../../animate/router.anim';
+import { QuoteService } from 'src/app/services/quote.service';
+import { Quote } from 'src/app/domain/quote.model';
 
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -15,7 +17,8 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  animations: [slide2Rigth]
+  animations: [slide2Rigth],
+  changeDetection: ChangeDetectionStrategy.Default,
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
@@ -23,10 +26,18 @@ export class LoginComponent implements OnInit {
     Validators.required,
     Validators.email,
   ]);
-  @HostBinding('@routeAnim')
-  state;
+  @HostBinding('@routeAnim') state;
   matcher = new MyErrorStateMatcher();
-  constructor(private fb: FormBuilder) { }
+
+  quote: Quote = {
+    'id': '1',
+    'cn': '被击垮通常只是暂时的，但如果你放弃的话，就会使它成为永恒。（Marilyn vos Savant）',
+    'en': 'Being defeated is often a temporary condition. Giving up is what makes it permanent.',
+    'pic': '/assets/img/quotes/1.jpg'
+  };
+  constructor(private fb: FormBuilder, private quoteService$: QuoteService) {
+    this.quoteService$.getQuote().subscribe(q => this.quote = q);
+  }
 
   ngOnInit() {
     // 简单的FormGroup初始化，但是没有FormBuilder那么简介。
@@ -41,6 +52,7 @@ export class LoginComponent implements OnInit {
     //     ]),
     //   }
     // );
+
     this.form = this.fb.group({
       email: ['email@abc.om',
         Validators.compose([
