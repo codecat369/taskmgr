@@ -26,6 +26,7 @@ export class RegisterComponent implements OnInit {
       psd: [],
       psdrpt: [],
       avatar: [this.defaultImage],
+      birthday: [Date.now()]
     });
   }
 

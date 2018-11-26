@@ -22,7 +22,7 @@ import { CoreComponent } from './core/core.component';
 
 import { ServicesModule } from '../services/services.module';
 
-
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 @NgModule({
   imports: [
 
@@ -32,7 +32,6 @@ import { ServicesModule } from '../services/services.module';
     BrowserModule,
     BrowserAnimationsModule,
     MatSidenavModule,
-
     LoginModule,
     ProjectModule,
     GviewModule,

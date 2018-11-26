@@ -3,7 +3,7 @@ import { Http } from '@angular/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/internal/operators';
 import { Quote } from '../domain/quote.model';
-import { cdebug} from '../utils/debug.util';
+import { debug} from '../utils/debug.util';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +16,7 @@ export class QuoteService {
   getQuote(): Observable<Quote> {
     const uri = `${this.config.apiUri}/quotes/${Math.floor(Math.random() * 10)}`;
     return this.http.get(uri).pipe(
-      cdebug('test'),
+      debug('QuoteService'),
       map(res => res.json() as Quote)
     );
   }

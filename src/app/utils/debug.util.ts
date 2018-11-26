@@ -1,10 +1,10 @@
 import { environment } from '../../environments/environment';
 import { Observable, Subject, asapScheduler, pipe, of, from, interval, merge, fromEvent } from 'rxjs';
 
-// import { filter, map, take, toArray } from 'rxjs/operators';
+import { filter, map, take, toArray } from 'rxjs/operators';
 
 
-export const cdebug = (msg: string) => <T>(source: Observable<T>) => new Observable<T>(
+export const debug = (msg: string) => <T>(source: Observable<T>) => new Observable<T>(
     observer => {
         return source.subscribe(
             {
